@@ -23,10 +23,9 @@ function lastMonths(count: number): string[] {
 export function MonthlyTrend({ transactions }: Props) {
   const { t, i18n } = useTranslation('dashboard')
 
+  // Zostawiamy formatMoney do wyświetlania zaokrąglonych wartości
   const formatMoney = (value: number) =>
-    new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(
-      value,
-    )
+    new Intl.NumberFormat(i18n.language, { maximumFractionDigits: 0 }).format(value)
 
   const formatMonthLabel = (monthKey: string) =>
     new Intl.DateTimeFormat(i18n.language, { month: 'short' }).format(new Date(`${monthKey}-01`))
@@ -48,26 +47,29 @@ export function MonthlyTrend({ transactions }: Props) {
 
   return (
     <div className="rounded-2xl border border-ink/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5">
-      <p className="text-sm font-medium">{t('monthlyTrendTitle')}</p>
+      <div className="flex items-center justify-between">
+        <p className="text-sm font-medium">{t('monthlyTrendTitle')}</p>
+        <span className="font-mono text-xs text-ink/40 dark:text-slate-500">PLN</span>
+      </div>
 
       {!hasData ? (
         <p className="mt-4 text-sm text-ink/40 dark:text-slate-500">{t('noCategoryData')}</p>
       ) : (
-        <div className="mt-4 flex items-end justify-between gap-2">
+        <div className="mt-6 flex h-48 items-end justify-between gap-2">
           {months.map((month) => (
-            <div key={month.key} className="flex flex-1 flex-col items-center gap-1.5">
-              <div className="flex h-24 w-full items-end">
+            <div key={month.key} className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+              <div className="flex h-36 w-full items-end">
                 <div
-                  className="w-full rounded-t bg-ledger-red/70"
+                  className="w-full rounded-t-md bg-ledger-red/70"
                   style={{
                     height: month.amount > 0 ? `${Math.max((month.amount / maxAmount) * 100, 4)}%` : '0%',
                   }}
                 />
               </div>
-              <span className="text-[10px] font-medium uppercase text-ink/40 dark:text-slate-500">
+              <span className="text-[11px] font-semibold uppercase text-ink/40 dark:text-slate-500">
                 {formatMonthLabel(month.key)}
               </span>
-              <span className="font-mono text-[10px] tabular text-ink/50 dark:text-slate-400">
+              <span className="font-mono text-[10px] tabular text-center text-ink/60 dark:text-slate-300">
                 {formatMoney(month.amount)}
               </span>
             </div>

@@ -52,24 +52,21 @@ export function CategoryBreakdown({ transactions }: Props) {
 
   return (
     <div className="rounded-2xl border border-ink/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm font-medium">{t('categoryBreakdownTitle')}</p>
-        <div className="flex w-fit overflow-hidden rounded-lg border border-ink/10 dark:border-white/10">
-          {(['month', 'quarter', 'all'] as Period[]).map((option) => (
-            <button
-              key={option}
-              onClick={() => setPeriod(option)}
-              className={`px-2.5 py-1 text-xs font-medium transition-colors ${
-                period === option
-                  ? 'bg-ink text-paper dark:bg-slate-100 dark:text-slate-900'
-                  : 'text-ink/50 hover:text-ink dark:text-slate-400 dark:hover:text-slate-100'
-              }`}
-            >
-              {t(`period${option.charAt(0).toUpperCase()}${option.slice(1)}`)}
-            </button>
-          ))}
-        </div>
-      </div>
+      <div className="inline-flex items-center overflow-hidden rounded-lg border border-ink/10 dark:border-white/10">
+  {(['month', 'quarter', 'all'] as Period[]).map((option) => (
+    <button
+      key={option}
+      onClick={() => setPeriod(option)}
+      className={`px-2.5 py-1 text-xs font-medium whitespace-nowrap transition-colors leading-none flex items-center justify-center ${
+        period === option
+          ? 'bg-ink text-paper dark:bg-slate-100 dark:text-slate-900'
+          : 'text-ink/50 hover:text-ink dark:text-slate-400 dark:hover:text-slate-100'
+      }`}
+    >
+      {t(`period${option.charAt(0).toUpperCase()}${option.slice(1)}`)}
+    </button>
+  ))}
+</div>
 
       {categories.length === 0 ? (
         <p className="mt-4 text-sm text-ink/40 dark:text-slate-500">{t('noCategoryData')}</p>
