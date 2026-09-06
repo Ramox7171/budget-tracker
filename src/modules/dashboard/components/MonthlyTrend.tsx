@@ -23,7 +23,6 @@ function lastMonths(count: number): string[] {
 export function MonthlyTrend({ transactions }: Props) {
   const { t, i18n } = useTranslation('dashboard')
 
-  // Zostawiamy formatMoney do wyświetlania zaokrąglonych wartości
   const formatMoney = (value: number) =>
     new Intl.NumberFormat(i18n.language, { maximumFractionDigits: 0 }).format(value)
 
@@ -69,7 +68,7 @@ export function MonthlyTrend({ transactions }: Props) {
               <span className="text-[11px] font-semibold uppercase text-ink/40 dark:text-slate-500">
                 {formatMonthLabel(month.key)}
               </span>
-              <span className="font-mono text-[10px] tabular text-center text-ink/60 dark:text-slate-300">
+              <span className="text-center font-mono text-[10px] tabular text-ink/60 dark:text-slate-300">
                 {formatMoney(month.amount)}
               </span>
             </div>

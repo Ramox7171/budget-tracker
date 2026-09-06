@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import { useAccounts } from '../accounts/useAccounts'
 import { useBudget } from '../simulator/useBudget'
+import { usePetBudget } from '../pets/hooks/usePetBudget'
+import { useCarTracker } from '../cars/useCarTracker'
+import { seedDemoData } from '../../lib/demoData'
 import { CategoryBreakdown } from './components/CategoryBreakdown'
 import { MonthlyTrend } from './components/MonthlyTrend'
 
@@ -10,6 +13,15 @@ export function DashboardPage() {
   const { t, i18n } = useTranslation('dashboard')
   const { accounts, transactions, totalBalance } = useAccounts()
   const { budget, remaining } = useBudget()
+  const { pets } = usePetBudget()
+  const { vehicles } = useCarTracker()
+
+  const isEmpty = accounts.length === 0 && budget === null && pets.length === 0 && vehicles.length === 0
+
+  const handleLoadDemoData = () => {
+    seedDemoData()
+    window.location.reload()
+  }
 
   const formatMoney = (value: number) =>
     new Intl.NumberFormat(i18n.language, { style: 'currency', currency: 'PLN' }).format(value)
@@ -28,6 +40,18 @@ export function DashboardPage() {
     <div className="mx-auto max-w-2xl">
       <h1 className="mb-1 text-lg font-semibold tracking-tight">{t('title')}</h1>
       <p className="mb-6 text-sm text-ink/50 dark:text-slate-400">{t('subtitle')}</p>
+
+      {isEmpty && (
+        <div className="mb-6 rounded-2xl border border-dashed border-ink/20 bg-white/40 p-5 text-center dark:border-white/20 dark:bg-white/5">
+          <p className="text-sm text-ink/60 dark:text-slate-300">{t('emptyStateHint')}</p>
+          <button
+            onClick={handleLoadDemoData}
+            className="mt-3 rounded-lg bg-ink px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-ink/85 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-300"
+          >
+            {t('loadDemoData')}
+          </button>
+        </div>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-2xl border border-ink/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5">
@@ -91,7 +115,7 @@ export function DashboardPage() {
         </ul>
       )}
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 space-y-4">
         <CategoryBreakdown transactions={transactions} />
         <MonthlyTrend transactions={transactions} />
       </div>

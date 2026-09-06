@@ -3,6 +3,7 @@ import { ThemeSection } from './components/ThemeSection'
 import { LanguageSection } from './components/LanguageSection'
 import { BackupSection } from './components/BackupSection'
 import { PinSection } from './components/PinSection'
+import { DemoDataSection } from './components/DemoDataSection'
 
 export function SettingsPage() {
   const { t } = useTranslation('settings')
@@ -17,6 +18,7 @@ export function SettingsPage() {
         <LanguageSection />
         <PinSection />
         <BackupSection />
+        <DemoDataSection />
       </div>
     </div>
   )

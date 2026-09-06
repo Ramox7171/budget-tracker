@@ -16,7 +16,7 @@
     "cars": "Vehicles",
     "accounts": "Accounts",
     "settings": "Settings",
-    "appName": "Budget Tracker"
+    "appName": "Home Budget"
   },
   "theme": {
     "light": "Light",
@@ -51,7 +51,13 @@
     "pinIncorrect": "Incorrect PIN.",
     "pinMismatch": "PINs don't match, try again.",
     "pinSaved": "PIN saved.",
-    "pinRemoved": "PIN lock turned off."
+    "pinRemoved": "PIN lock turned off.",
+    "demoTitle": "Demo data",
+    "demoHint": "For testing and showcasing the app — fills every module with sample data.",
+    "demoSeed": "Load demo data",
+    "demoClear": "Clear all data",
+    "demoSeedConfirm": "This will overwrite current data with sample data. Continue?",
+    "demoClearConfirm": "This will delete all data from every module. Continue?"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -70,7 +76,9 @@
     "periodAll": "All time",
     "noCategoryData": "No data to show for this period.",
     "uncategorized": "Uncategorized",
-    "otherCategories": "Other categories"
+    "otherCategories": "Other categories",
+    "emptyStateHint": "Empty instance — load demo data to see how it works.",
+    "loadDemoData": "Load demo data"
   },
   "simulator": {
     "intro": "Let's start with",

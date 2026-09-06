@@ -16,7 +16,7 @@
     "cars": "Samochody",
     "accounts": "Konta",
     "settings": "Ustawienia",
-    "appName": "Budget Tracker"
+    "appName": "Budżet domowy"
   },
   "theme": {
     "light": "Jasny",
@@ -51,7 +51,13 @@
     "pinIncorrect": "Nieprawidłowy PIN.",
     "pinMismatch": "PIN-y się nie zgadzają, spróbuj ponownie.",
     "pinSaved": "PIN zapisany.",
-    "pinRemoved": "Blokada PIN wyłączona."
+    "pinRemoved": "Blokada PIN wyłączona.",
+    "demoTitle": "Dane demo",
+    "demoHint": "Do testów i pokazywania aplikacji — wypełnia wszystkie moduły przykładowymi danymi.",
+    "demoSeed": "Wczytaj dane demo",
+    "demoClear": "Wyczyść wszystkie dane",
+    "demoSeedConfirm": "To nadpisze obecne dane przykładowymi. Kontynuować?",
+    "demoClearConfirm": "To usunie wszystkie dane ze wszystkich modułów. Kontynuować?"
   },
   "dashboard": {
     "title": "Pulpit",
@@ -72,7 +78,9 @@
     "periodAll": "Wszystko",
     "noCategoryData": "Brak danych do pokazania w tym okresie.",
     "uncategorized": "Bez kategorii",
-    "otherCategories": "Inne kategorie"
+    "otherCategories": "Inne kategorie",
+    "emptyStateHint": "Pusta instancja — wczytaj dane demo, żeby zobaczyć jak to działa.",
+    "loadDemoData": "Wczytaj dane demo"
   },
   "simulator": {
     "intro": "Zacznijmy od",
